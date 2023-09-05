@@ -1,0 +1,77 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String
+  lastName: String
+  userType: UserTypeEnum
+}
+
+type Report @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  revenue: Float
+  cashburn: Float
+  companyID: ID! @index(name: "byCompany")
+  createdBy: User @hasOne
+  arpu: Float
+  ltv: Float
+  cac: Float
+  cashOnHand: Float
+  ebitda: Float
+  customerCount: Int
+  grossProfitPercentage: Float
+  nextFundraiseDate: String
+  reportCreatedDate: String
+  grossProfitAmount: Float
+}
+
+enum UserTypeEnum {
+  ADMIN
+  ANALYST
+  INVESTOR
+  FOUNDER
+  CLIENT
+}
+
+type Contact @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  userType: UserTypeEnum
+  linkedinProfileUrl: String
+  companyContacts: [Company] @manyToMany(relationName: "ContactCompany")
+}
+
+enum BusinessModelEnum {
+  SAAS_SUBSCRIPTION
+  TRANSACTIONAL
+  CUSTOM
+}
+
+enum FounderQualityEnum {
+  EXCEPTIONAL
+  STRONG
+  AVERAGE
+  UNKNOWN
+  BELOW_AVERAGE
+}
+
+enum IndustryEnum {
+  ECOMMERCE
+  AEROSPACE
+  MANUFACTURINGS
+  FINTECH
+}
+
+type Company @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  industry: IndustryEnum
+  founderQuality: FounderQualityEnum
+  businessModel: BusinessModelEnum
+  businessModelNote: String
+  contacts: [Contact!] @manyToMany(relationName: "ContactCompany")
+  headquarters: String
+  location: String
+  features: [String]
+  financialReports: [Report] @hasMany(indexName: "byCompany", fields: ["id"])
+}
+ 

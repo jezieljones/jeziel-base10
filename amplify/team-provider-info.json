@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jezielbase10-dev-05855-authRole",
+      "UnauthRoleArn": "arn:aws:iam::088531526512:role/amplify-jezielbase10-dev-05855-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::088531526512:role/amplify-jezielbase10-dev-05855-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-jezielbase10-dev-05855-deployment",
+      "UnauthRoleName": "amplify-jezielbase10-dev-05855-unauthRole",
+      "StackName": "amplify-jezielbase10-dev-05855",
+      "StackId": "arn:aws:cloudformation:us-east-1:088531526512:stack/amplify-jezielbase10-dev-05855/242ec210-4631-11ee-a9b9-0a7d9ccdd349",
+      "AmplifyAppId": "d2ycuhr8d0104l"
+    },
+    "categories": {
+      "api": {
+        "jezielbase10": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2ycuhr8d0104l",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}
